@@ -1,0 +1,89 @@
+Claro, aquí tienes un ejemplo sencillo de una página web que utiliza un iframe para acceder a otras webs sin salir de la página principal. Este ejemplo incluye HTML, CSS y JavaScript.
+
+**HTML:**
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceder a otras webs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Acceder a otras webs</h1>
+        <div class="controls">
+            <input type="text" id="urlInput" placeholder="Ingrese la URL">
+            <button onclick="loadWebsite()">Cargar Web</button>
+        </div>
+        <div class="iframe-container">
+            <iframe id="webIframe" src=""></iframe>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+**CSS (styles.css):**
+```css
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+    width: 80%;
+    max-width: 800px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+#urlInput {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.iframe-container {
+    width: 100%;
+    height: 600px;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+}
+```
+
+**JavaScript (script.js):**
+```javascript
+function loadWebsite() {
+    var urlInput = document.getElementById('urlInput').value;
+    if (!urlInput.startsWith('http://') && !urlInput.startsWith('https://')) {
+        urlInput = 'http://' + urlInput;
+    }
+    document.getElementById('webIframe').src = urlInput;
+}
+```
+
+Este ejemplo crea una página web con un campo de texto y un botón. Puedes ingresar una URL en el campo de texto y hacer clic en el botón para cargar la página web en un iframe. El iframe permite mostrar otra página web dentro de tu propia página sin redirigir al usuario fuera de ella.
+
+Recuerda que algunas páginas web pueden tener configuraciones de seguridad (como encabezados HTTP `X-Frame-Options`) que impiden que se carguen dentro de un iframe.
